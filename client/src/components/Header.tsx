@@ -23,7 +23,7 @@ export default function Header() {
     ]},
     { label: "Features", href: "#features" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Docs", href: "/docs" },
+    { label: "How it works", href: "/how-it-works" },
   ];
 
   const handleNavClick = (href: string) => {
