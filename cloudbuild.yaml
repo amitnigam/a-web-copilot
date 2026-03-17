@@ -4,6 +4,10 @@ steps:
       - "build"
       - "-f"
       - "dockerfile"
+      - "--build-arg"
+      - "VITE_POSTHOG_KEY=${_VITE_POSTHOG_KEY}"
+      - "--build-arg"
+      - "VITE_POSTHOG_HOST=${_VITE_POSTHOG_HOST}"
       - "-t"
       - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$COMMIT_SHA"
       - "-t"
@@ -30,3 +34,5 @@ substitutions:
   _REGION: northamerica-northeast2
   _REPO: cloud-run
   _SERVICE: ai-web-copilot
+  _VITE_POSTHOG_KEY: ""
+  _VITE_POSTHOG_HOST: "https://us.i.posthog.com"

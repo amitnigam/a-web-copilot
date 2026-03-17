@@ -1,4 +1,6 @@
 FROM node:20-alpine AS build
+ARG VITE_POSTHOG_KEY
+ARG VITE_POSTHOG_HOST
 WORKDIR /app
 
 RUN corepack enable
@@ -7,6 +9,8 @@ COPY patches ./patches
 RUN pnpm install --frozen-lockfile
 
 COPY . .
+ENV VITE_POSTHOG_KEY=${VITE_POSTHOG_KEY}
+ENV VITE_POSTHOG_HOST=${VITE_POSTHOG_HOST}
 RUN pnpm build
 
 FROM node:20-alpine AS runtime
