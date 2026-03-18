@@ -16,6 +16,9 @@ if (typeof window !== "undefined" && posthogKey) {
 			maskAllInputs: false,
 		},
 	});
+} else if (typeof window !== "undefined") {
+	// Surface a soft warning in case env vars were not provided at build time
+	console.warn("PostHog not initialized: missing VITE_POSTHOG_KEY.");
 }
 
 createRoot(document.getElementById("root")!).render(<App />);
