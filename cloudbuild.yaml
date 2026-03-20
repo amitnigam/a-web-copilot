@@ -1,4 +1,11 @@
 steps:
+  # Fail fast if the PostHog key is missing so the build doesn't produce an unusable bundle.
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: bash
+    args:
+      - "-c"
+      - "test -n \"$_VITE_POSTHOG_KEY\" || { echo 'Missing substitution _VITE_POSTHOG_KEY'; exit 1; }"
+
   - name: "gcr.io/cloud-builders/docker"
     args:
       - "build"
@@ -13,6 +20,7 @@ steps:
       - "-t"
       - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest"
       - "."
+
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: gcloud
     args:
@@ -31,8 +39,8 @@ images:
   - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$COMMIT_SHA"
   - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest"
 substitutions:
-  _REGION: northamerica-northeast2
+  _REGION: us-central1
   _REPO: cloud-run
-  _SERVICE: ai-web-copilot
-  _VITE_POSTHOG_KEY: ""
+  _SERVICE: a-web-copilot
+  _VITE_POSTHOG_KEY: "" # set in trigger or via Secret Manager substitution
   _VITE_POSTHOG_HOST: "https://us.i.posthog.com"
