@@ -44,3 +44,5 @@ substitutions:
   _SERVICE: a-web-copilot
   _VITE_POSTHOG_KEY: "" # set in trigger or via Secret Manager substitution
   _VITE_POSTHOG_HOST: "https://us.i.posthog.com"
+options:
+  logging: CLOUD_LOGGING_ONLY
