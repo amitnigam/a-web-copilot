@@ -50,8 +50,8 @@ images:
   - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$COMMIT_SHA"
   - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest"
 substitutions:
-  _REGION: us-central1
-  _REPO: cloud-run
+  _REGION: global
+  _REPO: amitnigam/a-web-copilot
   _SERVICE: a-web-copilot
   _VITE_POSTHOG_KEY: _REQUIRED_ # set in trigger or via Secret Manager substitution
   _VITE_POSTHOG_HOST: "https://us.i.posthog.com"
