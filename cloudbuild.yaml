@@ -50,7 +50,7 @@ images:
   - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$COMMIT_SHA"
   - "${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:latest"
 substitutions:
-  _REGION: global
+  _REGION: us-central1
   _REPO: a-web-copilot # Artifact Registry repo name (no slashes)
   _SERVICE: a-web-copilot
   _VITE_POSTHOG_KEY: _REQUIRED_ # set in trigger or via Secret Manager substitution
