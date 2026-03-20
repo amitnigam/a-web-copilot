@@ -10,7 +10,7 @@ steps:
     args:
       - "build"
       - "-f"
-      - "dockerfile"
+      - "Dockerfile"
       - "--build-arg"
       - "VITE_POSTHOG_KEY=${_VITE_POSTHOG_KEY}"
       - "--build-arg"
