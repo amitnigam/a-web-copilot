@@ -131,9 +131,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@awebcopilot.com" className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">
+                <button
+                  onClick={() => handleNavClick("/contact")}
+                  className="text-gray-400 hover:text-cyan-400 transition-colors text-sm"
+                >
                   Contact
-                </a>
+                </button>
               </li>
             </ul>
           </div>
